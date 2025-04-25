@@ -72,25 +72,17 @@ const Navbar = () => {
             <ul className="flex space-x-1">
               <li>
                 <a className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
-                  Home
+                  Support Us
                 </a>
-              </li>
-              <li className="relative group">
-                <button className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200 flex items-center gap-1">
-                  About Me
-                  <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <ul className="absolute top-full left-0 mt-2 w-56 bg-emerald-600/95 backdrop-blur-md rounded-xl p-2 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top">
-                  <li><a className="block px-4 py-3 hover:bg-white/10 rounded-lg">Background</a></li>
-                  <li><a className="block px-4 py-3 hover:bg-white/10 rounded-lg">Academic Involvement</a></li>
-                  <li><a className="block px-4 py-3 hover:bg-white/10 rounded-lg">Ongoing Projects</a></li>
-                </ul>
               </li>
               <li>
                 <a className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
-                  Past & Upcoming Projects
+                  My Resume
+                </a>
+              </li>
+              <li>
+                <a className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
+                  Join Our Community
                 </a>
               </li>
             </ul>
@@ -98,7 +90,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <a href="https://nextgendev.space" className="px-6 py-2 bg-gradient-to-r from-green-300 to-emerald-400 text-emerald-900 font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-sm">
-            Join Us
+           Contact Us
           </a>
         </div>
       </div>
