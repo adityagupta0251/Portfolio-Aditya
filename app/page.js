@@ -2,6 +2,7 @@ import Head from "next/head";
 import img from "next/image";
 import Link from "next/link";
 import React from "react";
+import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
   return (

@@ -1,5 +1,6 @@
 // next.config.js
 module.exports = {
+  transpilePackages: ['framer-motion'],
   images: {
     domains: [
       "media.giphy.com",
