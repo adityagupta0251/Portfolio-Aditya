@@ -1,6 +1,18 @@
 'use client';
-import React, { useState, useEffect, useRef } from "react";
 
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  ClerkProvider, 
+  SignInButton, 
+  SignUpButton, 
+  SignedIn, 
+  SignedOut, 
+  UserButton 
+} from '@clerk/nextjs';
+
+/**
+ * Navbar component with Clerk auth buttons
+ */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,23 +41,16 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 px-4">
-      <div className={`
-        relative mx-auto max-w-6xl
-        transition-all duration-300 ease-out
-        ${scrolled ? 'mt-2' : 'mt-3'}
-      `}>
-        {/* Base Background */}
-        <div className="absolute inset-0 bg-emerald-500 rounded-full shadow-xl opacity-95 h-14">
-        </div>
-        
-        {/* Glass Effect Overlay */}
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full h-14"></div>
-        
-        {/* Main Navbar Content */}
+      <div className={`relative mx-auto max-w-6xl transition-all duration-300 ease-out ${scrolled ? 'mt-2' : 'mt-3'}`}>
+        {/* Background and Glass Overlay */}
+        <div className="absolute inset-0 bg-lime-bg-gray-600 rounded-full shadow-xl opacity-95 h-14" />
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full h-14" />
+
+        {/* Content */}
         <div className="relative flex items-center justify-between px-8 h-14">
           <div className="flex items-center gap-4">
-            {/* Mobile Menu Button */}
-            <button 
+            {/* Mobile menu toggle */}
+            <button
               className="md:hidden p-2 text-white hover:bg-white/20 rounded-full transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
@@ -59,79 +64,114 @@ const Navbar = () => {
               </svg>
             </button>
 
-            {/* Logo with Scaling Animation */}
-            <a className="text-xl font-bold tracking-tighter transform transition-transform duration-300 hover:scale-105">
-              <span className="bg-gradient-to-r from-white via-green-100 to-emerald-200 bg-clip-text text-transparent">
+            {/* Logo */}
+            <a href="/" className="text-xl font-bold tracking-tighter transform transition-transform duration-300 hover:scale-105">
+              <span className="bg-gradient-to-r from-white via-green-bg-gray-600 to-emerald-200 bg-clip-text text-transparent">
                 AdiK0.dev
               </span>
             </a>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-2">
             <ul className="flex space-x-1">
               <li>
-                <a className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
+                <a href="/" className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
                   Home
                 </a>
               </li>
-              <li className="relative group">
-                <button className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200 flex items-center gap-1">
-                  About Me
-                  <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <ul className="absolute top-full left-0 mt-2 w-56 bg-emerald-600/95 backdrop-blur-md rounded-xl p-2 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top">
-                  <li><a className="block px-4 py-3 hover:bg-white/10 rounded-lg">Background</a></li>
-                  <li><a className="block px-4 py-3 hover:bg-white/10 rounded-lg">Academic Involvement</a></li>
-                  <li><a className="block px-4 py-3 hover:bg-white/10 rounded-lg">Ongoing Projects</a></li>
-                </ul>
+              <li>
+                <a href="/about" className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
+                  About
+                </a>
               </li>
               <li>
-                <a className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
+                <a href="/upcoming" className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200">
                   Past & Upcoming Projects
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* CTA Button */}
-          <a href="https://nextgendev.space" className="px-6 py-2 bg-gradient-to-r from-green-300 to-emerald-400 text-emerald-900 font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-sm">
-            Join Us
-          </a>
+          {/* Auth Buttons */}
+          <div>
+            <SignedOut>
+              <SignInButton>
+                <button className="px-6 py-2 bg-gradient-to-r from-gray-200 to-emerald-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-sm">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton>
+                <button className="ml-2 px-6 py-2 bg-gradient-to-r from-gray-200 to-emerald-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-sm">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu with Better Transitions */}
-      <div 
+      {/* Mobile Menu */}
+      <div
         ref={mobileMenuRef}
-        className={`fixed md:hidden top-20 inset-x-4 bg-emerald-600/95 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-out
-        ${mobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`fixed md:hidden top-20 inset-x-4 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-out ${
+          mobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+        } bg-gray-600`}
       >
         <ul className="p-4 space-y-2">
           <li>
-            <a className="block px-4 py-3 text-white hover:bg-white/10 rounded-xl">Home</a>
+            <a href="/" className="block px-4 py-3 text-white hover:bg-white/10 rounded-xl">
+              Home
+            </a>
           </li>
           <li>
-            <div className="px-4 py-3 cursor-pointer hover:bg-white/10 rounded-xl" onClick={() => toggleDropdown('aboutMobile')}>
+            <div
+              className="px-4 py-3 cursor-pointer hover:bg-white/10 rounded-xl"
+              onClick={() => toggleDropdown('aboutMobile')}
+            >
               <div className="flex justify-between items-center">
                 <span>About Me</span>
-                <svg className={`w-4 h-4 transition-transform ${activeDropdown === 'aboutMobile' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className={`w-4 h-4 transition-transform ${
+                    activeDropdown === 'aboutMobile' ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
-              <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === 'aboutMobile' ? 'max-h-40 mt-2' : 'max-h-0'}`}>
-                <ul className="pl-4 space-y-2 border-l-2 border-emerald-400/30">
-                  <li><a className="block py-2 hover:bg-white/10 rounded-lg px-3">Background</a></li>
-                  <li><a className="block py-2 hover:bg-white/10 rounded-lg px-3">Academic Involvement</a></li>
-                  <li><a className="block py-2 hover:bg-white/10 rounded-lg px-3">Ongoing Projects</a></li>
+              <div className={`overflow-hidden transition-all duration-300 ${
+                activeDropdown === 'aboutMobile' ? 'max-h-40 mt-2' : 'max-h-0'
+              }`}>
+                <ul className="pl-4 space-y-2 border-l-2 border-emerald-600/30">
+                  <li>
+                    <a href="/background" className="block py-2 hover:bg-white/10 rounded-lg px-3">
+                      Background
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/academic" className="block py-2 hover:bg-white/10 rounded-lg px-3">
+                      Academic Involvement
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/ongoing" className="block py-2 hover:bg-white/10 rounded-lg px-3">
+                      Ongoing Projects
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
           </li>
           <li>
-            <a className="block px-4 py-3 text-white hover:bg-white/10 rounded-xl">Past & Upcoming Projects</a>
+            <a href="/upcoming" className="block px-4 py-3 text-white hover:bg-white/10 rounded-xl">
+              Past & Upcoming Projects
+            </a>
           </li>
         </ul>
       </div>
@@ -139,4 +179,14 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+/**
+ * Main HomePage component with ClerkProvider
+ */
+export default function HomePage() {
+  return (
+    <ClerkProvider>
+      <Navbar />
+      {/* You can add more page content below as needed */}
+    </ClerkProvider>
+  );
+}
