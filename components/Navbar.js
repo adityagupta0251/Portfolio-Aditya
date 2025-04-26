@@ -108,41 +108,14 @@ const Navbar = () => {
                   Home
                 </a>
               </li>
-              <div
-                className="relative group"
-                onMouseEnter={() => toggleDropdown("aboutDesktop")}
-                onMouseLeave={() => toggleDropdown(null)}
-              >
-                <div className="flex items-center gap-1 px-4 py-3 cursor-pointer hover:bg-white/10 rounded-xl transition-colors">
-                  <span>About Me</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform ${
-                      activeDropdown === "aboutDesktop" ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
-
-                {/* Dropdown Content */}
-                {activeDropdown === "aboutDesktop" && (
-                  <div className="absolute top-full left-0 w-48 bg-gray-900 rounded-lg shadow-xl mt-1 py-2 transition-opacity duration-200">
-                    <div className="hover:bg-white/10 px-4 py-2">Biography</div>
-                    <div className="hover:bg-white/10 px-4 py-2">
-                      Experience
-                    </div>
-                    <div className="hover:bg-white/10 px-4 py-2">Education</div>
-                  </div>
-                )}
-              </div>
+              <li>
+                <a
+                  href="/about"
+                  className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200"
+                >
+                  About
+                </a>
+              </li>
               <li>
                 <a
                   href="/upcoming"
@@ -194,62 +167,14 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <div
-              className="px-4 py-3 cursor-pointer hover:bg-white/10 rounded-xl"
-              onClick={() => toggleDropdown("aboutMobile")}
+            <a
+              href="/about"
+              className="block px-4 py-3 text-white hover:bg-white/10 rounded-xl"
             >
-              <div className="flex justify-between items-center">
-                <span>About Me</span>
-                <svg
-                  className={`w-4 h-4 transition-transform ${
-                    activeDropdown === "aboutMobile" ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  activeDropdown === "aboutMobile" ? "max-h-40 mt-2" : "max-h-0"
-                }`}
-              >
-                <ul className="pl-4 space-y-2 border-l-2 border-emerald-600/30">
-                  <li>
-                    <a
-                      href="/background"
-                      className="block py-2 hover:bg-white/10 rounded-lg px-3"
-                    >
-                      Background
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/academic"
-                      className="block py-2 hover:bg-white/10 rounded-lg px-3"
-                    >
-                      Academic Involvement
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/ongoing"
-                      className="block py-2 hover:bg-white/10 rounded-lg px-3"
-                    >
-                      Ongoing Projects
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              About
+            </a>
           </li>
+
           <li>
             <a
               href="/upcoming"

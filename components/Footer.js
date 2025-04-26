@@ -96,7 +96,7 @@ const Footer = () => {
             <ul className="flex space-x-1">
               <li>
                 <a
-                  href="/"
+                  href="https://nextgendev.space"
                   className="px-4 py-2 text-white hover:bg-white/10 rounded-full transition-all duration-200"
                 >
                   Our Team
