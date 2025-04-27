@@ -1,8 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { FaRocket, FaDatabase, FaStar, FaCodeBranch } from 'react-icons/fa';
-import ReactMarkdown from 'react-markdown';
+import { FaRocket, FaDatabase, FaStar, FaCodeBranch, FaTag, FaLink } from 'react-icons/fa';
 
 export default function Upcoming() {
   const [repos, setRepos] = useState([]);
@@ -10,28 +9,24 @@ export default function Upcoming() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    async function fetchRepos() {
       try {
-        const response = await fetch(
+        const res = await fetch(
           'https://api.github.com/users/adityagupta0251/repos?sort=created&direction=desc'
         );
-        const data = await response.json();
-        if (response.ok) {
-          setRepos(data);
-        } else {
-          setError(data.message);
-        }
-      } catch (err) {
-        setError(err.message);
+        if (!res.ok) throw new Error((await res.json()).message);
+        setRepos(await res.json());
+      } catch (e) {
+        setError(e.message);
       } finally {
         setLoading(false);
       }
-    };
+    }
     fetchRepos();
   }, []);
 
-  const upcomingRepos = repos.filter((repo) => repo.topics?.includes('upcoming'));
-  const pastRepos = repos.filter((repo) => !repo.topics?.includes('upcoming'));
+  const upcoming = repos.filter(r => r.topics?.includes('upcoming'));
+  const past = repos.filter(r => !r.topics?.includes('upcoming'));
 
   return (
     <motion.div
@@ -41,60 +36,15 @@ export default function Upcoming() {
       className="text-white"
     >
       <div className="container mx-auto pb-32 pt-14 px-5 md:px-10">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="flex justify-center flex-col gap-4 items-center text-center mb-20"
-        >
-          <h1 className="font-bold text-4xl md:text-6xl mb-6 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-            Development Portfolio
-          </h1>
-          <p className="text-lg max-w-3xl mx-auto px-4 leading-relaxed">
-            Exploring the intersection of innovation and implementation through
-            open-source contributions and cutting-edge project development.
-          </p>
-        </motion.div>
+        <Header />
 
-        {/* Loading and Error States */}
-        {loading && (
-          <div className="text-center text-xl text-gray-400">
-            Loading repositories...
-          </div>
-        )}
+        {loading && <Status message="Loading repositories..." color="gray" />}
+        {error && <Status message={`Error: ${error}`} color="red" />}
 
-        {error && (
-          <div className="text-center text-red-400">
-            Error fetching repositories: {error}
-          </div>
-        )}
-
-        {/* Projects Display */}
         {!loading && !error && (
           <>
-            {/* Upcoming Projects */}
-            <div className="my-20">
-              <h2 className="text-4xl font-bold text-center mb-8 flex items-center justify-center gap-3">
-                <FaRocket /> Upcoming Projects
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {upcomingRepos.map((repo) => (
-                  <RepoCard key={repo.id} repo={repo} />
-                ))}
-              </div>
-            </div>
-
-            {/* Past Projects */}
-            <div className="my-20">
-              <h2 className="text-4xl font-bold text-center mb-8 flex items-center justify-center gap-3">
-                <FaDatabase /> Past Projects
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {pastRepos.map((repo) => (
-                  <RepoCard key={repo.id} repo={repo} />
-                ))}
-              </div>
-            </div>
+            <Section title="Upcoming Projects" icon={<FaRocket />} items={upcoming} />
+            <Section title="Past Projects" icon={<FaDatabase />} items={past} />
           </>
         )}
       </div>
@@ -102,83 +52,93 @@ export default function Upcoming() {
   );
 }
 
+function Header() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      className="flex flex-col items-center text-center mb-20 gap-4"
+    >
+      <h1 className="font-bold text-4xl md:text-6xl bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+        Development Portfolio
+      </h1>
+      <p className="text-lg max-w-3xl leading-relaxed">
+        Exploring open-source contributions and cutting-edge project development.
+      </p>
+    </motion.div>
+  );
+}
+
+function Status({ message, color }) {
+  return (
+    <div className={`text-center text-xl text-${color}-400 mt-10`}>{message}</div>
+  );
+}
+
+function Section({ title, icon, items }) {
+  return (
+    <div className="my-20">
+      <h2 className="text-4xl font-bold text-center mb-8 flex justify-center items-center gap-3">
+        {icon} {title}
+      </h2>
+      <div className={`grid gap-6 ${items.length > 2 ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'}`}>
+        {items.map(repo => <RepoCard key={repo.id} repo={repo} />)}
+      </div>
+    </div>
+  );
+}
+
 function RepoCard({ repo }) {
-  const [readme, setReadme] = useState('');
-  const [loadingReadme, setLoadingReadme] = useState(true);
-
-  useEffect(() => {
-    const fetchReadme = async () => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${repo.full_name}/readme`
-        );
-        const data = await response.json();
-        if (response.ok) {
-          const content = atob(data.content);
-          setReadme(content);
-        } else {
-          setReadme('');
-        }
-      } catch (err) {
-        setReadme('');
-      } finally {
-        setLoadingReadme(false);
-      }
-    };
-    fetchReadme();
-  }, [repo.full_name]);
-
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="p-6 bg-white/10 rounded-xl space-y-4 h-full flex flex-col"
+      className="p-6 bg-white/10 rounded-xl flex flex-col h-full"
     >
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-start mb-4">
         <div>
-          <h3 className="text-xl font-semibold">
-            <a
-              href={repo.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-purple-400 transition-colors"
-            >
-              {repo.name}
-            </a>
-          </h3>
+          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-xl font-semibold hover:text-purple-400 transition">
+            {repo.name}
+          </a>
           <p className="text-gray-300 text-sm mt-1">{repo.description}</p>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-400">{repo.language}</span>
-          <div className="flex items-center gap-1">
-            <FaStar className="text-yellow-400" />
-            <span className="text-sm">{repo.stargazers_count}</span>
-          </div>
-        </div>
+        <Stats repo={repo} />
       </div>
 
-      <div className="flex-1 bg-black/20 p-4 rounded-lg overflow-y-auto">
-        {loadingReadme ? (
-          <div className="text-gray-400">Loading README...</div>
-        ) : readme ? (
-          <div className="prose prose-invert max-w-none text-sm">
-            <ReactMarkdown>
-              {readme.slice(0, 500) + (readme.length > 500 ? '...' : '')}
-            </ReactMarkdown>
-          </div>
-        ) : (
-          <div className="text-gray-400">No README available</div>
-        )}
-      </div>
+      <Tags topics={repo.topics} />
 
-      <div className="flex items-center justify-between text-sm text-gray-400">
-        <div className="flex items-center gap-2">
-          <FaCodeBranch />
-          <span>{repo.forks_count}</span>
+      <div className="mt-auto flex justify-between items-center text-sm text-gray-400">
+        <div className="flex items-center gap-1">
+          <FaLink />
+          <a href={repo.html_url} className="hover:underline">View Code</a>
         </div>
-        <span>
-          Updated: {new Date(repo.updated_at).toLocaleDateString()}
-        </span>
+        <span>Updated: {new Date(repo.updated_at).toLocaleDateString()}</span>
       </div>
     </motion.div>
+  );
+}
+
+function Stats({ repo }) {
+  return (
+    <div className="flex gap-4 items-center text-sm text-gray-400">
+      <div className="flex items-center gap-1">
+        <FaStar /> {repo.stargazers_count}
+      </div>
+      <div className="flex items-center gap-1">
+        <FaCodeBranch /> {repo.forks_count}
+      </div>
+    </div>
+  );
+}
+
+function Tags({ topics = [] }) {
+  if (!topics.length) return null;
+  return (
+    <div className="flex flex-wrap gap-2 mb-4">
+      {topics.map(topic => (
+        <span key={topic} className="flex items-center gap-1 text-xs bg-blue-600/30 px-2 py-1 rounded-full">
+          <FaTag /> {topic}
+        </span>
+      ))}
+    </div>
   );
 }
