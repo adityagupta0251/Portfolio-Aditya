@@ -258,9 +258,8 @@ function TeamCollaboration() {
           style={{
             animation: `orbit ${5 + i}s linear infinite`,
             animationDelay: `${i * 0.5}s`,
-            transform: `translate(-50%, -50%) rotate(${
-              i * 72
-            }deg) translateX(100px)`,
+            transform: `translate(-50%, -50%) rotate(${i * 72
+              }deg) translateX(100px)`,
           }}
         >
           {getIcon(i)}
@@ -330,9 +329,8 @@ function FundingVisual() {
               )} rounded-t-lg shadow-lg`}
               style={{
                 height: `${getBarHeight(i)}px`,
-                animation: `growBar 4s ${
-                  i * 0.3
-                }s infinite alternate ease-in-out`,
+                animation: `growBar 4s ${i * 0.3
+                  }s infinite alternate ease-in-out`,
               }}
             />
             <div className="mt-2 text-xs font-semibold text-white opacity-80">
@@ -582,12 +580,21 @@ export default function About() {
               <FaRocket /> Launch Your Project
             </motion.button>
           </Link>
-          <Link href="/discover">
+          <Link href="https://razorpay.me/@nextgendev">
             <motion.button
               whileHover={{ scale: 1.05 }}
               className="border border-white/30 px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:bg-white/10 transition-all"
             >
               <FaHeart /> Support Creators
+            </motion.button>
+          </Link>
+          <Link href="https://rzp.io/rzp/FHzbOGHM">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className="border border-white/30 px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:bg-white/10 transition-all"
+            >
+              <FaHeart /> Buy A Discord complete workflows management with 1000
+              Rs
             </motion.button>
           </Link>
         </div>
