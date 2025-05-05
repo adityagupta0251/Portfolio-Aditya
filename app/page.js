@@ -1,5 +1,5 @@
 import Head from "next/head";
-import img from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ContactModal from "@/components/ContactModal";
@@ -19,7 +19,7 @@ export default function Home() {
         {/* Header Section */}
         <section className="text-center mb-12">
           <div className="mx-auto mb-4 w-[128px] h-[128px] relative">
-            <img
+            <Image
               src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
               alt="Hi!"
               width={128}
@@ -33,7 +33,7 @@ export default function Home() {
           </h1>
 
           <div className="mt-2 mx-auto w-[150px] h-[30px] relative">
-            <img
+            <Image
               src="https://komarev.com/ghpvc/?username=adityagupta0251&color=blueviolet&label=Profile+Views"
               alt="Profile Views"
               width={150}
@@ -48,7 +48,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="https://img.shields.io/badge/-LINKEDIN-0A66C2?logo=linkedin&logoColor=white&style=for-the-badge"
                 alt="LinkedIn"
                 width={150}
@@ -61,7 +61,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="https://img.shields.io/badge/-TWITTER-1DA1F2?logo=twitter&logoColor=white&style=for-the-badge"
                 alt="Twitter"
                 width={150}
@@ -76,7 +76,7 @@ export default function Home() {
           </p>
 
           <div className="mx-auto mt-4 w-[600px] h-[50px] relative">
-            <img
+            <Image
               src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=3000&pause=1000&color=4CAF50&center=true&vCenter=true&width=600&lines=Full+Stack+Developer;Indie+Hacker;Cybersecurity+Enthusiast;AI+Innovator;Open+Source+Contributor"
               alt="Typing Animation"
               width={600}
@@ -91,7 +91,7 @@ export default function Home() {
           <h2 className="text-3xl font-semibold mb-4">🚀 About Me</h2>
           <div className="flex items-center space-x-6">
             <div className="w-[128px] h-[128px] relative rounded-full overflow-hidden">
-              <img
+              <Image
                 src="https://avatars.githubusercontent.com/u/166922118?v=4"
                 alt="Profile Picture"
                 width={128}
@@ -154,7 +154,7 @@ export default function Home() {
               },
             ].map((tech) => (
               <div key={tech.alt} className="w-[50px] h-[50px] relative">
-                <img
+                <Image
                   src={tech.src}
                   alt={tech.alt}
                   width={50}
@@ -172,7 +172,7 @@ export default function Home() {
             ⚔️ Featured Project: Adaptive Warzone
           </h2>
           <Link href="#">
-            <img
+            <Image
               src="https://media.indiedb.com/cache/images/games/1/65/64058/thumb_300x150/april1.gif"
               alt="Gameplay Demo"
               width={800}
@@ -188,7 +188,7 @@ export default function Home() {
           </ul>
           <div className="flex space-x-4">
             <Link href="#">
-              <img
+              <Image
                 src="https://img.shields.io/badge/-DEMO-FFFFFF?logo=itch.io&logoColor=black"
                 alt="Live Demo"
                 width={100}
@@ -196,7 +196,7 @@ export default function Home() {
               />
             </Link>
             <Link href="#">
-              <img
+              <Image
                 src="https://img.shields.io/badge/-REPO-181717?logo=github"
                 alt="GitHub Repo"
                 width={100}
@@ -212,21 +212,21 @@ export default function Home() {
             📊 Development Analytics
           </h2>
           <div className="space-y-4">
-            <img
+            <Image
               src="https://github-readme-stats.vercel.app/api?username=adityagupta0251&show_icons=true&theme=radical"
               alt="GitHub Stats"
               width={800}
               height={200}
               className="object-contain rounded-lg"
             />
-            <img
+            <Image
               src="https://github-readme-streak-stats.herokuapp.com/?user=adityagupta0251&theme=radical"
               alt="Contribution Streak"
               width={800}
               height={200}
               className="object-contain rounded-lg"
             />
-            <img
+            <Image
               src="https://github-readme-stats.vercel.app/api/top-langs/?username=adityagupta0251&layout=compact&theme=radical"
               alt="Top Languages"
               width={800}
@@ -268,7 +268,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={link.src} alt={link.alt} width={100} height={30} />
+                <Image src={link.src} alt={link.alt} width={100} height={30} />
               </a>
             ))}
           </div>
@@ -290,43 +290,7 @@ export default function Home() {
               <strong>Boost Open Source Impact</strong>: Develop projects,
               tutorials, and community resources.
             </li>
-            <li>
-              <strong>Expand Project Reach</strong>: Enhance infrastructure for
-              scalable and robust solutions.
-            </li>
           </ul>
-          <a
-            href="https://github.com/sponsors/adityagupta0251"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://img.shields.io/badge/Sponsor-❤️-brightgreen"
-              alt="Sponsor on GitHub"
-              width={120}
-              height={30}
-            />
-          </a>
-          <p className="mt-2 italic">
-            Your sponsorship is an investment in a future where technology
-            transforms dreams into reality!
-          </p>
-        </section>
-
-        {/* Footer */}
-        <section className="text-center">
-          <h3 className="text-2xl font-medium mb-4">
-            Always curious, always coding... 🔥
-          </h3>
-          <div className="mx-auto w-[256px] h-[256px] relative">
-            <img
-              src="https://media.giphy.com/media/jRf5fsn8G6YaogAWxn/giphy.gif"
-              alt="Coding Animation"
-              width={256}
-              height={256}
-              className="object-contain"
-            />
-          </div>
         </section>
       </main>
     </>
