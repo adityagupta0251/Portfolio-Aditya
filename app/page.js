@@ -34,7 +34,7 @@ export default function Home() {
 
           <div className="mt-2 mx-auto w-[150px] h-[30px] relative">
             <img
-              src="https://komarev.com/ghpvc/?username=AdityaKr&color=blueviolet&label=Profile+Views"
+              src="https://komarev.com/ghpvc/?username=adityagupta0251&color=blueviolet&label=Profile+Views"
               alt="Profile Views"
               width={150}
               height={30}
