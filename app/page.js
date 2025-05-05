@@ -1,3 +1,4 @@
+"use client";
 import { FaEye } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
