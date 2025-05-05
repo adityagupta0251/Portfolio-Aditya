@@ -45,9 +45,8 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 z-50 px-4">
       <div
-        className={`relative mx-auto max-w-6xl transition-all duration-300 ease-out ${
-          scrolled ? "mt-2" : "mt-3"
-        }`}
+        className={`relative mx-auto max-w-6xl transition-all duration-300 ease-out ${scrolled ? "mt-2" : "mt-3"
+          }`}
       >
         {/* Background and Glass Overlay */}
         <div className="absolute inset-0 bg-lime-bg-gray-600 rounded-full shadow-xl opacity-95 h-14" />
@@ -151,11 +150,10 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className={`fixed md:hidden top-20 inset-x-4 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-out ${
-          mobileMenuOpen
+        className={`fixed md:hidden top-20 inset-x-4 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-out ${mobileMenuOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"
-        } bg-gray-600`}
+          } bg-gray-600`}
       >
         <ul className="p-4 space-y-2">
           <li>

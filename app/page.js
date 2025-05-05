@@ -480,7 +480,7 @@ export default function About() {
           <div className="mt-2 mx-auto w-full h-8 relative flex justify-center items-center">
             <div className="flex items-center gap-2 bg-purple-900/50 px-4 py-1 rounded-full">
               <FaEye className="text-purple-400" />
-              <span className="text-white">Profile Views: 1.2K</span>
+              <span className="text-white">Profile Views: 400+</span>
             </div>
           </div>
 
@@ -739,7 +739,7 @@ export default function About() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-gradient-to-br from-purple-600 to-blue-500 px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:shadow-lg transition-all"
               >
-                // Completing the Call to Action Section and the remaining code
+
 
                 <FaRocket /> Get Started
               </motion.button>
@@ -767,9 +767,16 @@ export default function About() {
                 <p className="text-gray-300 text-center mb-4">
                   Support my projects with a one-time contribution
                 </p>
-                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
-                  Donate Now
-                </button>
+                <a
+                  href="https://rzp.io/rzp/FHzbOGHM"  // Replace with your actual Razorpay payment link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                    Donate Now
+                  </button>
+                </a>
+
               </div>
             </Card>
 
@@ -780,9 +787,16 @@ export default function About() {
                 <p className="text-gray-300 text-center mb-4">
                   Become a regular supporter with monthly donations
                 </p>
-                <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition">
-                  Subscribe
-                </button>
+                <a
+                  href="https://razorpay.me/@nextgendev"  // Replace with your actual Razorpay payment link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                    Donate Now
+                  </button>
+                </a>
+
               </div>
             </Card>
 
@@ -793,9 +807,16 @@ export default function About() {
                 <p className="text-gray-300 text-center mb-4">
                   Contribute to my open source projects on GitHub
                 </p>
-                <button className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-md transition flex items-center gap-2">
-                  <FaGithub /> GitHub
-                </button>
+                <a
+                  href="https://github.com/adityagupta0251"  // Replace with your actual Razorpay payment link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                    Go to My Open source projects
+                  </button>
+                </a>
+
               </div>
             </Card>
           </div>
