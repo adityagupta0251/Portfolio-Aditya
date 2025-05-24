@@ -65,7 +65,14 @@ function Header() {
       <p className="text-lg max-w-3xl leading-relaxed">
         Exploring open-source contributions and cutting-edge project development.
       </p>
+      <section className="container mx-auto space-y-10 px-4">
+
+        <iframe src="https://nextgendev.notion.site/ebd/1e9706cd96d68010a111e483a9d0d8c2?v=1e9706cd96d68049b193000c0fcf32cf" width="100%" height="600" frameborder="0" allowfullscreen />
+
+      </section>
+
     </motion.div>
+
   );
 }
 
@@ -112,8 +119,11 @@ function RepoCard({ repo }) {
           <a href={repo.html_url} className="hover:underline">View Code</a>
         </div>
         <span>Updated: {new Date(repo.updated_at).toLocaleDateString()}</span>
+
       </div>
+
     </motion.div>
+
   );
 }
 
@@ -142,3 +152,4 @@ function Tags({ topics = [] }) {
     </div>
   );
 }
+

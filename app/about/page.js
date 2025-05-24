@@ -594,9 +594,11 @@ export default function About() {
               className="border border-white/30 px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:bg-white/10 transition-all"
             >
               <FaHeart /> Complete Support
-              
+
+
             </motion.button>
           </Link>
+          
         </div>
       </section>
     </motion.div>

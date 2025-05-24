@@ -668,6 +668,16 @@ export default function About() {
             ))}
           </div>
         </section>
+        {/* Featured Project Section */}
+        <section className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-2">
+            <FaGamepad className="text-blue-400" />
+          </h2>
+          <div className="bg-white/10 p-6 rounded-xl backdrop-blur-md">
+            <iframe src="https://nextgendev.notion.site/ebd/1e9706cd96d680529dc8cea8653097ca?v=1f3706cd96d68032850e000c0c005b58" width="100%" height="600" frameborder="0" allowfullscreen />
+
+          </div>
+        </section>
 
         {/* How It Works Section */}
         <section className="container mx-auto space-y-10 px-4">
@@ -698,61 +708,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* Featured Project Section */}
-        <section className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-2">
-            <FaGamepad className="text-blue-400" /> Featured Project: Adaptive Warzone
-          </h2>
-          <div className="bg-white/10 p-6 rounded-xl backdrop-blur-md">
-            <div className="w-full h-64 relative mb-4 rounded-lg overflow-hidden">
-              <img
-                src="https://media.indiedb.com/cache/images/games/1/65/64058/thumb_300x150/april1.gif"
-                alt="Gameplay Demo"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <ul className="list-disc list-inside mb-6 text-gray-200 space-y-2">
-              <li>🤖 ML-powered adaptive AI opponents</li>
-              <li>🌐 Real-time multiplayer with WebSocket</li>
-              <li>🔥 Firebase backend integration</li>
-              <li>🎮 Phaser.js game engine</li>
-            </ul>
-            <div className="flex space-x-4">
-              <Link href="#" className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-md transition flex items-center gap-2">
-                <FaGamepad /> Live Demo
-              </Link>
-              <Link href="#" className="bg-[#181717] hover:bg-[#2c2c2c] text-white px-4 py-2 rounded-md transition flex items-center gap-2">
-                <FaGithub /> GitHub Repo
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* Call to Action Section */}
-        <section className="text-center py-12 bg-gradient-to-br from-purple-900 to-blue-900 rounded-xl mx-4">
-          <h2 className="text-4xl font-bold text-white mb-8">
-            Start Your Creative Journey
-          </h2>
-          <div className="flex justify-center gap-6 flex-wrap">
-            <Link href="/signup">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="bg-gradient-to-br from-purple-600 to-blue-500 px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:shadow-lg transition-all"
-              >
-
-
-                <FaRocket /> Get Started
-              </motion.button>
-            </Link>
-
-            <button
-              onClick={() => setContactModalOpen(true)}
-              className="bg-white/20 backdrop-blur-sm px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:bg-white/30 transition-all"
-            >
-              <FaEnvelope /> Contact Me
-            </button>
-          </div>
-        </section>
 
         {/* Support Me Section */}
         <section className="container mx-auto px-4">
@@ -870,37 +826,7 @@ export default function About() {
                   ✕
                 </button>
               </div>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-gray-300 mb-1">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 bg-white/10 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-300 mb-1">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 bg-white/10 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-                    placeholder="Your email"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-300 mb-1">Message</label>
-                  <textarea
-                    className="w-full px-4 py-2 bg-white/10 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white h-32"
-                    placeholder="Your message"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 rounded-md hover:from-blue-600 hover:to-purple-700 transition-all"
-                >
-                  Send Message
-                </button>
-              </form>
+
             </div>
           </div>
         )}
