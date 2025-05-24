@@ -567,8 +567,8 @@ export default function About() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="text-center py-12 bg-gradient-to-br from-purple-900 to-blue-900 rounded-xl mx-4">
-        <h2 className="text-4xl font-bold text-white mb-8">
+      <section className="container mx-auto space-y-10 px-4">
+        <h2 className="text-4xl font-bold text-center text-white flex justify-center items-center gap-3">
           Start Your Creative Journey
         </h2>
         <div className="flex justify-center gap-6 flex-wrap">
@@ -593,8 +593,8 @@ export default function About() {
               whileHover={{ scale: 1.05 }}
               className="border border-white/30 px-8 py-4 rounded-xl font-semibold text-white flex items-center gap-2 hover:bg-white/10 transition-all"
             >
-              <FaHeart /> Buy A Discord complete workflows management with 1000
-              Rs
+              <FaHeart /> Complete Support
+              
             </motion.button>
           </Link>
         </div>
